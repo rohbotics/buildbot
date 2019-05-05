@@ -157,6 +157,8 @@ class HTTPStep(BuildStep):
         log.addHeader('Request Header:\n')
         for k, v in response.request.headers.items():
             log.addHeader('\t%s: %s\n' % (k, v))
+             if k == 'Authorization':
+                v = '[not logging secrets]'
 
         log.addStdout('URL: %s\n' % response.url)
 
